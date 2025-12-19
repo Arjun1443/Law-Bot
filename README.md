@@ -38,6 +38,7 @@ LawBot/
 ├── README.md
 
 ⚙️ Phase-wise Explanation
+
 🔹 Phase 1: Data Preparation
 Loaded and merged 14,543 legal records
 Normalized data into instruction–output format
@@ -57,6 +58,7 @@ Fine-tuned a base language model on cleaned legal dataset
 Optimized for instruction-following legal Q&A
 Training and validation handled using JSONL format
 Notebook: finetune_lawbot.ipynb
+
 🔹 Phase 3: RAG (Retrieval-Augmented Generation)
 Integrated document retrieval for factual grounding
 Improved answer accuracy and reduced hallucinations
