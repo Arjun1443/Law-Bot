@@ -1,98 +1,38 @@
-# Law-Bot
-LawBot is an AI-powered legal question-answering system focused on the Indian Constitution and legal domain. The project covers the complete pipeline from data preprocessing and fine-tuning to Retrieval-Augmented Generation (RAG) and a final demo-ready chatbot.
+# LawBot — Indian Legal Q&A Research and Demo
 
-📌 Project Objectives
-Build a domain-specific legal assistant (LawBot)
-Fine-tune a language model on Indian legal data
-Reduce hallucinations using Retrieval-Augmented Generation (RAG)
-Provide accurate, source-backed legal answers
+A legal-domain learning project combining data-preparation, fine-tuning and RAG notebooks with a Streamlit Q&A demonstration.
 
-🧱 Project Architecture
-Data Sources
-   ↓
-Data Cleaning & Normalization (Phase 1)
-   ↓
-Fine-Tuning Dataset (JSONL)
-   ↓
-Model Fine-Tuning (Phase 2)
-   ↓
-RAG Pipeline (Phase 3)
-   ↓
-Final LawBot Demo (Phase 6)
+## Why this project matters
 
+Domain-specific AI requires careful data preparation and a clear account of how answers are produced. This repository explores those stages for Indian legal material.
 
-📂 Repository Structure
-LawBot/
-│
-├── data/
-│   ├── lawbot_cleaned.jsonl
-│
-├── notebooks/
-│   ├── preprocessing_report.ipynb
-│   ├── finetune_lawbot.ipynb
-│   ├── RAG.ipynb
-│
-├── docs/
-│   ├── LawBot_Report.docx
-│
-├── README.md
+## What is implemented
 
-⚙️ Phase-wise Explanation
+| Component | Location | Role |
+| --- | --- | --- |
+| Data preparation | `LawBot/LowBot_Demo/preprocessing_report.ipynb` | Preparing legal Q&A data |
+| Fine-tuning experiment | `LawBot/LowBot_Demo/finetune_lawbot.ipynb` | Model training workflow |
+| Retrieval experiment | `LawBot/LowBot_Demo/RAG.ipynb` | Notebook-based RAG exploration |
+| Streamlit demo | `LawBot/LowBot_Demo/LLM_LLJ/LLM_LLJ/app.py` | Substring matching against JSON Q&A files |
+| Project report | `LawBot/LowBot_Demo/LawBot_Report.docx` | Supporting documentation |
 
-🔹 Phase 1: Data Preparation
-Loaded and merged 14,543 legal records
-Normalized data into instruction–output format
-Removed duplicates based on instruction
-Final dataset size: 14,460 records
-Split into:
-Training: 11,568 (80%)
-Validation: 2,892 (20%)
-Data Format:
-{
-  "instruction": "<legal question>",
-  "output": "<legal answer>",
-  "source": ["CONSTITUTION"]
-}
-🔹 Phase 2: Model Fine-Tuning
-Fine-tuned a base language model on cleaned legal dataset
-Optimized for instruction-following legal Q&A
-Training and validation handled using JSONL format
-Notebook: finetune_lawbot.ipynb
+The runnable Streamlit app searches curated question–answer pairs; it does not invoke the fine-tuned model or notebook RAG pipeline.
 
-🔹 Phase 3: RAG (Retrieval-Augmented Generation)
-Integrated document retrieval for factual grounding
-Improved answer accuracy and reduced hallucinations
-Legal sources retrieved before response generation
-Notebook: RAG.ipynb
+## Run the demo
 
-🔹 Phase 6: Final Demo
-End-to-end LawBot working demo
-Example interaction:
-User:
-What is India according to the Union and its Territory?
-LawBot:
-India, that is Bharat, shall be a Union of States.
-Source: Constitution of India
-🛠️ Tech Stack
-Python
-Jupyter Notebook
-JSON / JSONL
-Large Language Models (Fine-tuning)
-Retrieval-Augmented Generation (RAG)
-🚀 How to Run
-Clone the repository
-git clone https://github.com/your-username/LawBot.git
-cd LawBot
+```bash
+git clone https://github.com/Arjun1443/Law-Bot.git
+cd Law-Bot/LawBot/LowBot_Demo/LLM_LLJ/LLM_LLJ
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
+```
 
-Open notebooks in Jupyter
-jupyter notebook
-Run notebooks in order:
-preprocessing_report.ipynb
-finetune_lawbot.ipynb
-RAG.ipynb
+**Setup requirement:** the current app contains a machine-specific Windows data path in `load_qaa_data()`. Change it to the local `data/` directory before starting. Review the notebook-specific dependency and dataset requirements separately.
 
-📈 Future Enhancements
-Multi-language support (Hindi, Telugu, etc.)
-Legal case-law integration
-Web & mobile deployment
+## Skills demonstrated
 
+Python · Streamlit · JSON/JSONL data preparation · legal-domain Q&A · fine-tuning and retrieval experiments
+
+## Limitations
+
+This is educational material, not legal advice. Dataset currency, completeness, and answer accuracy are not established by the presence of a matching Q&A pair. Model and retrieval experiments require their own evaluation; no accuracy improvement is claimed here without a reproducible comparison.
